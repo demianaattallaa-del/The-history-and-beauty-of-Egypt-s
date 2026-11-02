@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EGYPT — Timeless Wonders</title>
+  <meta name="description" content="Explore 15 amazing Egyptian destinations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" />
+  <style>
+    :root { --navy:#102a43; --deep:#092238; --gold:#efa12a; --cream:#fff7e9; --muted:#afc1ce; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--deep); color:var(--cream); font-family:'DM Sans',sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    button,input { font:inherit; }
+    a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
+    .header { position:absolute; z-index:20; left:0; right:0; top:0; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:16px max(25px,4vw); background:linear-gradient(#092238b8,transparent); }
+    .brand { display:flex; align-items:center; gap:10px; white-space:nowrap; }
+    .brand-icon { background:linear-gradient(135deg,#efa12a,#aa5b13); border-radius:8px; padding:8px 11px; color:white; font-size:18px; }
+    .brand strong { display:block; font:600 21px Georgia,serif; letter-spacing:.025em; }
+    .brand small { display:block; color:var(--gold); font-size:9px; letter-spacing:.12em; }
+    .navigation { display:flex; align-items:center; gap:20px; font-size:12px; }
+    .navigation a:hover { color:var(--gold); }
+    .nav-cta,.button-primary { border:0; background:var(--gold); color:#122d43!important; border-radius:9px; padding:13px 20px; font-weight:700; }
+    .nav-cta:hover,.button-primary:hover { background:#ffc366; }
+    .menu-button { display:none; border:1px solid #ffffff50; padding:9px; border-radius:7px; color:white; background:#102a43; cursor:pointer; }
+    .hero { min-height:100vh; min-height:100svh; position:relative; isolation:isolate; display:grid; place-items:center; text-align:center; padding:130px 20px 72px; background:#1c3a50; }
+    .hero::before { content:""; position:absolute; inset:0; z-index:-2; background:url('hero.webp') center 45%/cover no-repeat; }
+    .hero::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,#102a439e 0%,#102a438e 45%,#0a263de8 100%); }
+    .hero-content { width:min(100%,850px); }
+    .hero-pill { display:inline-block; padding:7px 15px; border:1px solid #ffffff55; border-radius:100px; color:#f1e3cf; background:#ffffff16; font-size:11px; }
+    .hero-pill span { color:var(--gold); }
+    h1,h2,h3 { font-family:'Playfair Display',Georgia,serif; }
+    .hero h1 { font-size:clamp(80px,10vw,140px); margin:9px 0 0; letter-spacing:-.055em; line-height:1.12; }
+    .hero-tagline { font:italic clamp(24px,3vw,35px)/1.25 'Playfair Display',Georgia,serif; margin:8px 0 25px; font-variant:small-caps; }
+    .hero-description { max-width:650px; margin:0 auto 30px; line-height:1.8; font-size:15px; color:#e8edef; }
+    .hero-actions { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+    .hero-actions a { padding:14px 23px; border-radius:9px; font-size:12px; font-weight:700; }
+    .button-secondary { border:1px solid #ffffff70; background:#ffffff1a; color:white; }
+    .stats { border-top:1px solid #ffffff45; margin:46px auto 0; padding-top:25px; max-width:780px; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .stats strong { font:30px Georgia,serif; display:block; }
+    .stats span { color:#c1ced6; font-size:10px; letter-spacing:.08em; }
+    .scroll-down { position:absolute; bottom:15px; color:#dce6eb; font-size:25px; }
+    .atlas { max-width:1400px; margin:auto; padding:75px 28px; }
+    .section-eyebrow { color:var(--gold); font-size:11px; text-transform:uppercase; letter-spacing:.18em; font-weight:700; }
+    .section-title { font-size:clamp(33px,4vw,48px); margin:10px 0; }
+    .section-description { color:var(--muted); font-size:14px; margin-bottom:25px; }
+    .filter-bar { display:flex; flex-wrap:wrap; gap:10px; margin:22px 0; }
+    .filter { background:#ffffff12; color:#e8edf0; border:1px solid #ffffff40; border-radius:100px; padding:12px 17px; cursor:pointer; }
+    .filter[aria-pressed="true"] { background:var(--gold); color:var(--navy); border-color:var(--gold); font-weight:700; }
+    .filter:hover { border-color:var(--gold); }
+    .map-layout { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(290px,.7fr); gap:30px; }
+    .map { aspect-ratio:10/8; position:relative; border-radius:16px; overflow:hidden; border:1px solid #ffffff30; background:radial-gradient(circle at 45% 50%,#286d7a,#103346 70%); }
+    .map svg { width:100%; height:100%; display:block; }
+    .map-pin { position:absolute; transform:translate(-50%,-50%); padding:9px; border:none; background:none; cursor:pointer; }
+    .map-pin::before { content:""; display:block; height:12px; width:12px; border:2px solid white; background:var(--pin-color); border-radius:50%; box-shadow:0 0 0 5px #142a4470,0 0 14px #0006; }
+    .map-pin:hover::before,.map-pin.selected::before { transform:scale(1.4); box-shadow:0 0 0 7px #ffffff45,0 0 19px var(--pin-color); }
+    .map-pin span { display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); white-space:nowrap; color:#19334a; background:white; border-radius:6px; font-size:11px; padding:6px 9px; font-weight:700; }
+    .map-pin:hover span,.map-pin:focus-visible span,.map-pin.selected span { display:block; }
+    .map-note { position:absolute; bottom:12px; left:15px; font-size:11px; color:#d5e4e8; background:#0b2942bb; border-radius:6px; padding:8px 12px; }
+    .featured { background:#15364b; border:1px solid #ffffff27; border-radius:16px; padding:26px; align-self:start; }
+    .featured h3 { font-size:34px; margin:13px 0; }
+    .featured p { color:#bbd0d7; line-height:1.8; font-size:14px; }
+    .featured-image { height:205px; margin:17px 0; border-radius:9px; background:linear-gradient(135deg,#d49c53,#2c7589); background-position:center; background-size:cover; }
+    .featured a { display:block; padding:15px 17px; border-radius:8px; font-weight:700; color:#153046; background:var(--gold); text-align:center; }
+    .destinations { background:#f6f0e5; color:#203b49; padding:73px max(20px,5vw); }
+    .destinations-inner { max-width:1400px; margin:auto; }
+    .destinations .section-eyebrow { color:#9f702c; }
+    .destinations .section-description { color:#6d7b80; }
+    .search { display:block; width:min(100%,360px); padding:14px 17px; color:#203b49; border:1px solid #c8c7bc; background:#fffdf7; border-radius:8px; margin:12px 0 20px; }
+    .destinations .filter { background:white; border-color:#c8c7bc; color:#24404c; }
+    .destinations .filter[aria-pressed="true"] { background:var(--navy); border-color:var(--navy); color:white; }
+    .cards { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:18px; margin-top:25px; }
+    .card { background:white; color:#203747; border-radius:12px; overflow:hidden; box-shadow:0 4px 24px #1d344015; transition:transform .2s; }
+    .card:hover { transform:translateY(-4px); }
+    .card-image { height:150px; background:linear-gradient(140deg,var(--city-color),#193a50); background-size:cover; background-position:center; }
+    .card-content { padding:17px; }
+    .card-category { font-size:10px; color:#71838c; text-transform:uppercase; letter-spacing:.08em; }
+    .card h3 { font-size:23px; margin:8px 0; font-weight:400; }
+    .card p { color:#657b81; font-size:12px; min-height:34px; }
+    .card .visit { color:#986125; font-size:12px; font-weight:700; }
+    .empty-message { display:none; color:#59737d; }
+    .footer { background:#102a43; padding:55px 28px 0; color:#d6e0e6; }
+    .footer-inner { max-width:1080px; margin:auto; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:35px; padding-bottom:40px; }
+    .footer h4 { font:700 12px 'Playfair Display',Georgia,serif; color:#f3e0c1; text-transform:uppercase; letter-spacing:.08em; margin:0 0 19px; }
+    .footer-brand { font:600 24px Georgia,serif; color:white; }
+    .footer-brand span { color:var(--gold); font:11px 'DM Sans',sans-serif; display:block; margin-top:3px; letter-spacing:.09em; }
+    .footer-intro { max-width:310px; font-size:11px; line-height:1.7; margin:15px 0 18px; }
+    .footer-buttons { display:flex; flex-wrap:wrap; gap:9px; }
+    .footer-buttons a { padding:9px 12px; font-size:11px; border:1px solid #49667c; border-radius:7px; }
+    .footer-buttons a:first-child { background:var(--gold); color:var(--deep); font-weight:700; }
+    .footer ul { padding:0; margin:0; list-style:none; }
+    .footer li { margin-bottom:10px; }
+    .footer li a { font-size:11px; color:#c2d0d9; }
+    .footer li a:hover { color:var(--gold); }
+    .footer-destination { display:flex; justify-content:space-between; gap:8px; }
+    .footer-destination small { color:#7d98aa; font-size:7px; white-space:nowrap; }
+    .footer-bottom { border-top:1px solid #ffffff1c; color:#8da2b2; padding:25px 0 31px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:15px; font-size:10px; }
+    @media(max-width:1150px) { .navigation { display:none; position:absolute; top:66px; left:0; right:0; padding:20px; background:#102a43; flex-direction:column; align-items:stretch; } .navigation.open { display:flex; } .menu-button { display:block; } .map-layout { grid-template-columns:1fr; } .cards { grid-template-columns:repeat(3,1fr); } .footer-grid { grid-template-columns:1.5fr 1fr 1fr; } .footer-grid>div:last-child { grid-column:2/4; } }
+    @media(max-width:700px) { .header { padding:12px 16px; } .brand strong { font-size:17px; } .hero { padding:115px 18px 65px; } .hero h1 { font-size:75px; } .hero-tagline { font-size:24px; } .hero-description { font-size:14px; } .stats { grid-template-columns:repeat(2,1fr); } .atlas { padding:52px 16px; } .cards { grid-template-columns:repeat(2,1fr); gap:12px; } .card-image { height:120px; } .card-content { padding:13px; } .card h3 { font-size:20px; } .footer-grid { grid-template-columns:1fr 1fr; } .footer-grid>div:first-child,.footer-grid>div:last-child { grid-column:1/-1; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="#home"><span class="brand-icon">★</span><span><strong>EGYPT</strong><small>TIMELESS WONDERS</small></span></a>
+    <button id="menuButton" class="menu-button" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav id="navigation" class="navigation" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#map">Explore Egypt</a>
+      <a href="#cities" data-region-link="all">All Cities</a>
+      <a href="#map" data-region-link="north">North Egypt</a>
+      <a href="#map" data-region-link="oasis">Oases &amp; Nile</a>
+      <a href="#map" data-region-link="redsea">Red Sea &amp; Sinai</a>
+      <a href="#about">About Egypt</a><a href="#cities" aria-label="Search cities">⌕</a><a href="#map" class="nav-cta">◉ EXPLORE THE MAP</a>
+    </nav>
+  </header>
+  <main id="home">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-content">
+        <div class="hero-pill"><span>✧</span> Interactive Cultural Heritage &amp; Tourism Atlas · 15 Legendary Destinations</div>
+        <h1 id="heroTitle">EGYPT</h1>
+        <p class="hero-tagline">15 Destinations. Thousands of Years of<br>Wonder.</p>
+        <p class="hero-description">From the Mediterranean's timeless shores to the golden deserts, from the life-giving Nile to the crystal-clear waters of the Red Sea, discover the history, beauty, and living heritage of Egypt.</p>
+        <div class="hero-actions"><a class="button-primary" href="#map">◉ EXPLORE THE MAP</a><a class="button-secondary" href="#cities">Discover All Destinations →</a></div>
+        <div class="stats"><div><strong>15</strong><span>DESTINATIONS</span></div><div><strong>3</strong><span>GEOGRAPHIC REALMS</span></div><div><strong>7,000+</strong><span>YEARS OF LIVING HISTORY</span></div><div><strong>15</strong><span>CURATED CITY GUIDES</span></div></div>
+      </div><a class="scroll-down" href="#map" aria-label="Scroll to map">⌄</a>
+    </section>
+    <section id="map" class="atlas">
+      <div class="section-eyebrow">Find your next story</div><h2 class="section-title">Explore the map</h2><p class="section-description">Select a destination pin to reveal its story.</p>
+      <div class="filter-bar" id="mapFilters" aria-label="Filter map by region"></div><p class="section-description" id="regionDescription" aria-live="polite"></p>
+      <div class="map-layout"><div class="map" id="egyptMap">
+        <svg viewBox="0 0 1000 800" aria-label="Stylized map of Egypt" role="img" preserveAspectRatio="xMidYMid meet">
+          <defs><linearGradient id="sand" x2="1" y2="1"><stop stop-color="#ebd39f"/><stop offset="1" stop-color="#b89b70"/></linearGradient></defs>
+          <path d="M129 76 L270 77 L390 87 L485 90 L529 84 L595 66 L661 98 L695 108 L772 103 L821 101 L854 220 L810 325 L769 325 L732 244 L695 202 L684 255 L728 353 L769 444 L836 588 L869 745 L610 745 L129 742 Z" fill="url(#sand)" stroke="#f3dab2" stroke-width="2"/>
+          <path d="M610 101 L574 143 L590 185 L592 252 L621 385 L654 444 L695 490 L706 605 L609 738" fill="none" stroke="#4b93a5" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+          <text x="270" y="350" fill="#7d623e" font-size="21" letter-spacing="4">WESTERN DESERT</text>
+          <text x="725" y="210" fill="#103e54" font-size="17">SINAI</text>
+          <text x="710" y="675" fill="#a7d9e7" font-size="19">RED SEA</text>
+          <text x="160" y="53" fill="#b0d9e5" font-size="17">MEDITERRANEAN SEA</text>
+        </svg><div id="mapPins"></div><div class="map-note">Illustrative map · Select any marker to explore</div>
+      </div><aside class="featured"><div class="section-eyebrow">Featured destination</div><h3 id="featuredName">Alexandria</h3><span id="featuredCategory">Coastal heritage</span><div id="featuredImage" class="featured-image"></div><p id="featuredDescription"></p><a id="featuredLink" href="https://demianaattallaa-del.github.io/Alexandria/" target="_blank" rel="noopener noreferrer">Visit city website ↗</a></aside></div>
+    </section>
+    <section class="destinations" id="cities"><div class="destinations-inner">
+      <div class="section-eyebrow">Egypt, in every shade</div><h2 class="section-title">Discover all destinations</h2><p class="section-description">From ancient monuments to turquoise coastlines — choose your next story.</p>
+      <div id="cityFilters" class="filter-bar" aria-label="Filter city cards"></div><input id="citySearch" class="search" placeholder="Search for a city..." aria-label="Search cities" /><p class="section-description" id="resultsText" aria-live="polite"></p><div class="cards" id="cityCards"></div><p class="empty-message" id="noResults">No destinations match your search.</p>
+    </div></section>
+  </main>
+  <footer id="about" class="footer"><div class="footer-inner"><div class="footer-grid">
+    <div><a href="#home" class="footer-brand">★ EGYPT<span>TIMELESS WONDERS</span></a><p class="footer-intro">An immersive digital portal celebrating Egypt's 7,000-year cultural heritage, architectural marvels, and breathtaking natural wonders across 15 premier destinations.</p><div class="footer-buttons"><a href="#map">◉ OPEN ATLAS MAP</a><a href="#home">↑ Back to Top</a><a href="Egypt_Atlas_15_Cities.zip" download>↓ Download Package (ZIP)</a></div></div>
+    <div><h4>Explore Realms</h4><ul><li><a href="#map">Interactive National Map</a></li><li><a href="#cities" data-region-link="all">All 15 Destinations</a></li><li><a href="#map" data-region-link="north">Mediterranean North</a></li><li><a href="#map" data-region-link="oasis">Oases &amp; Nile Valley</a></li><li><a href="#map" data-region-link="redsea">Red Sea &amp; Sinai Mountains</a></li></ul></div>
+    <div><h4>Destinations (1–8)</h4><ul id="footerCities1"></ul></div><div><h4>Destinations (9–15)</h4><ul id="footerCities2"></ul></div>
+  </div><div class="footer-bottom"><span>© 2026 EGYPT — A Journey Through Time &amp; Beauty.</span><span>Egyptian Tourism &amp; Antiquities Heritage Portal · Timeless Wonders</span></div></div></footer>
+  <script>
+    const base='https://demianaattallaa-del.github.io/';
+    const cities=[
+      {name:'Alexandria',slug:'Alexandria/',region:'north',category:'Mediterranean pearl',tag:'A legendary city by the sea',color:'#2C92B3',x:38,y:13,img:'2.JPG'},
+      {name:'Marsa Matruh',slug:'Marsa-matruh/',region:'north',category:'Mediterranean calm',tag:'Azure beaches and coastal history',color:'#529AC1',x:20,y:11,img:'Gemini_Generated_Image_vc2nm7vc2nm7vc2n.jfif'},
+      {name:'Port Said',slug:'port-said/',region:'north',category:'Maritime heritage',tag:'Gateway to the Suez Canal',color:'#347A9F',x:69,y:12,img:'Gemini_Generated_Image_fil2knfil2knfil2.jpg'},
+      {name:'Dakahlia',slug:'Dakahlia/',region:'north',category:'Delta landscapes',tag:'The green heart of the Delta',color:'#77AA77',x:58,y:13,img:'village-mosque.jpg'},
+      {name:'Cairo',slug:'Cairo/',region:'north',category:'Living history',tag:'The city of a thousand stories',color:'#D6A54E',x:57,y:20,img:'Gemini_Generated_Image_st7ju6st7ju6st7j (1).jpg'},
+      {name:'Giza',slug:'Giza/',region:'north',category:'Ancient wonders',tag:'Beyond the great pyramids',color:'#D19A4E',x:54,y:21,img:'music-and-dance.png'},
+      {name:'Siwa',slug:'siwa/',region:'oasis',category:'Amber dunes',tag:'The magic of the western oasis',color:'#C9A168',x:17,y:32,img:'images.jfif'},
+      {name:'Fayoum',slug:'Fayoumnew/',region:'oasis',category:'Desert & wetlands',tag:'A lush escape west of the Nile',color:'#7C9A57',x:50,y:29,img:'01_modern_revival.png'},
+      {name:'Sohag',slug:'sohag/',region:'oasis',category:'Nile heritage',tag:'Stories from Upper Egypt',color:'#B08A5F',x:54,y:51,img:'Sohag-Museum.webp'},
+      {name:'Luxor',slug:'Luxor/',region:'oasis',category:'Temples & tombs',tag:'Egypt’s open-air museum',color:'#D38B55',x:57,y:61,img:'beginning.png'},
+      {name:'Aswan',slug:'aswan/',region:'oasis',category:'Nile & granite',tag:'Nubian warmth and island beauty',color:'#BA7657',x:61,y:80,img:'c5cd26e8-7371-4572-8fc4-c33acedead81.jpg'},
+      {name:'Hurghada',slug:'Hurghada/',region:'redsea',category:'Red Sea adventures',tag:'Reefs, beaches and horizons',color:'#26A7C4',x:72,y:50,img:'images (3).jpg'},
+      {name:'Sharm El Sheikh',slug:'Sharm-el-sheikh/',region:'redsea',category:'Marine beauty',tag:'Where the mountains meet the sea',color:'#1B9EA8',x:82,y:42,img:'02-mostafa-mosque.png'},
+      {name:'Dahab',slug:'New-dahab/',region:'redsea',category:'Golden shores',tag:'A relaxed adventure on the Red Sea',color:'#32B7AD',x:86,y:37,img:'attractions-bluehole-threepools-lagoon.png'},
+      {name:'Saint Catherine',slug:'santi-catherine/',region:'redsea',category:'Granite mountains',tag:'Sacred peaks and mountain trails',color:'#9D8181',x:81,y:35,img:'35169.jpg'}
+    ];
+    const regionLabels={all:'All Cities',north:'North Egypt',oasis:'Oases & Nile',redsea:'Red Sea & Sinai'};
+    const descriptions={all:'All 15 destinations across Egypt.',north:'Mediterranean coast, Nile Delta and Cairo–Giza.',oasis:'Western oases and the history-rich Nile Valley.',redsea:'Coral reefs, coastlines and Sinai mountains.'};
+    let region='all',selected='Alexandria';
+    const matchesRegion=c=>region==='all'||c.region===region;
+    const photoStyle=c=>`linear-gradient(0deg,#0c263b79,transparent),url('${encodeURI(c.img)}')`;
+    function renderFilters(){
+      for(const id of ['mapFilters','cityFilters']){
+        document.getElementById(id).innerHTML=Object.keys(regionLabels).map(k=>`<button type="button" class="filter" data-filter="${k}" aria-pressed="${k===region}">${regionLabels[k]}</button>`).join('');
+      }
+      document.getElementById('regionDescription').textContent=descriptions[region];
+      document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>setRegion(b.dataset.filter)));
+    }
+    function renderMap(){
+      document.getElementById('mapPins').innerHTML=cities.filter(matchesRegion).map(c=>`<button type="button" class="map-pin ${selected===c.name?'selected':''}" data-city="${c.name}" style="left:${c.x}%;top:${c.y}%;--pin-color:${c.color}" aria-label="Select ${c.name}"><span>${c.name}</span></button>`).join('');
+      document.querySelectorAll('[data-city]').forEach(b=>b.addEventListener('click',()=>selectCity(b.dataset.city)));
+    }
+    function selectCity(name){
+      const c=cities.find(c=>c.name===name); if(!c)return;
+      selected=name;
+      document.getElementById('featuredName').textContent=c.name;
+      document.getElementById('featuredCategory').textContent=c.category;
+      document.getElementById('featuredDescription').textContent=c.tag+'. Discover its culture, history and character.';
+      document.getElementById('featuredImage').style.backgroundImage=photoStyle(c);
+      document.getElementById('featuredLink').href=base+c.slug;
+      renderMap();
+    }
+    function renderCards(){
+      const query=document.getElementById('citySearch').value.trim().toLowerCase();
+      const visible=cities.filter(c=>matchesRegion(c)&&(c.name+' '+c.category+' '+c.tag).toLowerCase().includes(query));
+      document.getElementById('cityCards').innerHTML=visible.map(c=>`<a class="card" href="${base+c.slug}" target="_blank" rel="noopener noreferrer" style="--city-color:${c.color}"><div class="card-image" style="background-image:${photoStyle(c)}"></div><div class="card-content"><span class="card-category">${c.category}</span><h3>${c.name}</h3><p>${c.tag}</p><span class="visit">Explore city ↗</span></div></a>`).join('');
+      document.getElementById('resultsText').textContent=`Showing ${visible.length} destination${visible.length===1?'':'s'}`;
+      document.getElementById('noResults').style.display=visible.length?'none':'block';
+    }
+    function setRegion(value){
+      region=value; renderFilters(); renderCards();
+      if(!cities.some(c=>c.name===selected&&matchesRegion(c))){selected=cities.find(matchesRegion).name;}
+      selectCity(selected);
+    }
+    function renderFooter(){
+      const footerOrder=['Alexandria','Marsa Matruh','Port Said','Dakahlia','Cairo','Giza','Fayoum','Siwa','Sohag','Luxor','Aswan','Hurghada','Sharm El Sheikh','Dahab','Saint Catherine'];
+      const links=footerOrder.map(name=>{
+        const c=cities.find(c=>c.name===name);
+        return `<li><a class="footer-destination" href="${base+c.slug}" target="_blank" rel="noopener noreferrer"><span>${c.name}</span><small>${regionLabels[c.region].toUpperCase()}</small></a></li>`;
+      });
+      document.getElementById('footerCities1').innerHTML=links.slice(0,8).join('');
+      document.getElementById('footerCities2').innerHTML=links.slice(8).join('');
+    }
+    document.getElementById('citySearch').addEventListener('input',renderCards);
+    document.querySelectorAll('[data-region-link]').forEach(a=>a.addEventListener('click',()=>setRegion(a.dataset.regionLink)));
+    document.getElementById('menuButton').addEventListener('click',()=>{
+      const open=document.getElementById('navigation').classList.toggle('open');
+      document.getElementById('menuButton').setAttribute('aria-expanded',String(open));
+    });
+    document.querySelectorAll('.navigation a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navigation').classList.remove('open')));
+    renderFooter(); setRegion('all');
+  </script>
+</body>
+</html>
